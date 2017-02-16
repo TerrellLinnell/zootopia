@@ -1,35 +1,26 @@
 import React from 'react';
-import Home from './Home';
-import AnimalsContainer from './AnimalsContainer';
-import PostAnimalContainer from './PostAnimalContainer';
-import EditAnimalContainer from './EditAnimalContainer';
+import { Link } from 'react-router';
+import {Navbar, NavItem, Nav} from 'react-bootstrap';
+
 
 var App = React.createClass({
-  getInitialState: function () {
-    return (
-      {activeComponent: 'Home', activeId: null}
-    );
-  },
-  updateActiveComponent: function (comp, id) {
-    this.setState({activeComponent: comp, activeId: id})
-  },
-  renderProperComponent: function () {
-    if (this.state.activeComponent === 'Home') {
-      return (<Home updateActiveComponent={this.updateActiveComponent} />);
-    } else if (this.state.activeComponent === 'viewAll') {
-      return (<AnimalsContainer updateActiveComponent={this.updateActiveComponent} />);
-    } else if (this.state.activeComponent === 'postNew') {
-      return (<PostAnimalContainer updateActiveComponent={this.updateActiveComponent} />);
-    } else if (this.state.activeComponent === 'editAnimal') {
-      return (<EditAnimalContainer updateActiveComponent={this.updateActiveComponent} animalId={this.state.activeId}/>);
-    } else {
-      return null;
-    }
-  },
   render: function () {
     return(
       <div>
-        {this.renderProperComponent()}
+          <Navbar inverse >
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="#">Animals Home</a>
+              </Navbar.Brand>
+            </Navbar.Header>
+            <Nav>
+              <NavItem><Link to={'/animals'}>Show All Animals</Link></NavItem>
+            <NavItem><Link to={'/post'}>Add an Animal</Link></NavItem>
+              </Nav>
+          </Navbar>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     )
   }

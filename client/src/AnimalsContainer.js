@@ -21,7 +21,6 @@ var AnimalsContainer = React.createClass({
     })
   },
   deleteHandler: function (id) {
-    var that = this;
     $.ajax({
       url: "/api/animals/" +id,
       method: 'DELETE'
@@ -29,13 +28,10 @@ var AnimalsContainer = React.createClass({
       console.log(data);
     })
   },
-  updateHandler: function (id) {
-    this.props.updateActiveComponent("editAnimal", id)
-  },
   render: function () {
     return (
       <div>
-        {this.state.animals ? <AnimalsTable animals={this.state.animals} deleteHandler={this.deleteHandler} updateHandler={this.updateHandler}/> : <span> I have no animals </span>}
+        {this.state.animals ? <AnimalsTable animals={this.state.animals} deleteHandler={this.deleteHandler}/> : <span> I have no animals </span>}
       </div>
     );
   }

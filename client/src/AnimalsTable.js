@@ -1,12 +1,12 @@
 import React from 'react';
 import {Table, Button} from 'react-bootstrap';
-
+import { Link } from 'react-router';
 
 var AnimalsTable = function (props) {
   var Animals = props.animals.map(function (item) {
     return (<tr><td>{item.name}</td><td>{item.species}</td>
-                <td><Button bsStyle='danger' onClick={ () => props.deleteHandler(item._id)}>Delete</Button>
-                <Button bsStyle='primary' onClick={ () => props.updateHandler(item._id)}>Update</Button></td>
+                <td><Button bsStyle='danger' onClick={ () => props.deleteHandler(item._id)}>Delete</Button></td>
+                <td><Link to={'/edit/' + item._id} className='btn btn-primary'> Update </Link></td>
             </tr>);
   });
   return (

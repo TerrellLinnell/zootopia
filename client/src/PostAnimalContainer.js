@@ -12,14 +12,13 @@ var PostAnimalContainer = React.createClass ({
     this.setState(newData);
   },
   onClickHandler: function () {
-    var that = this;
     $.ajax({
       url: '/api/animals',
       method: 'POST',
       data: this.state
     }).done(function (data) {
       console.log(data);
-      that.props.updateActiveComponent('viewAll', null)
+      window.location='#/animals'
     })
   },
   render: function () {
