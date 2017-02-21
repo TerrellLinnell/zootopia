@@ -8,7 +8,7 @@ var user = new Schema({
     username: String,
     password: String
   },
-  location: {type: mongoose.Schema.Types.ObjectId, ref: 'Location'}
+  location: {type: Schema.Types.ObjectId, ref: 'Location'}
 });
 
 user.methods.generateHash =function (password) {
